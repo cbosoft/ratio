@@ -3,12 +3,13 @@
 
 namespace cbo {
 
+  template<typename T=long long>
   class Ratio {
 
     private:
-      long long num, den;
+      T num, den;
 
-      static long long get_gcd(long long a, long long b)
+      static T get_gcd(T a, T b)
       {
         while (b != 0) {
           a = b;
@@ -19,7 +20,7 @@ namespace cbo {
 
     public:
 
-      Ratio(long long num, long long den)
+      Ratio(T num, T den)
         : num(num), den(den)
       {
         //this->reduce();
@@ -27,17 +28,17 @@ namespace cbo {
 
       void reduce()
       {
-        long long gcd = get_gcd(den, num);
+        T gcd = get_gcd(den, num);
         den /= gcd;
         num /= gcd;
       }
 
-      long long get_num() const
+      T get_num() const
       {
         return this->num;
       }
 
-      long long get_den() const
+      T get_den() const
       {
         return this->den;
       }
@@ -58,8 +59,8 @@ namespace cbo {
         if (this->den == right.den)
           return Ratio(this->num+right.num, this->den);
 
-        long long den = this->den*right.den;
-        long long num = this->num*right.den + right.num*this->den;
+        T den = this->den*right.den;
+        T num = this->num*right.den + right.num*this->den;
         return Ratio(num, den);
       }
 
@@ -74,8 +75,8 @@ namespace cbo {
         if (this->den == right.den)
           return Ratio(this->num-right.num, this->den);
 
-        long long den = this->den*right.den;
-        long long num = this->num*right.den - right.num*this->den;
+        T den = this->den*right.den;
+        T num = this->num*right.den - right.num*this->den;
         return Ratio(num, den);
       }
 
@@ -90,7 +91,7 @@ namespace cbo {
         return Ratio(this->num*right.num, this->den*right.den);
       }
 
-      Ratio operator*(long long right) const
+      Ratio operator*(T right) const
       {
         return Ratio(this->num*right, this->den);
       }
@@ -101,7 +102,7 @@ namespace cbo {
         return Ratio(this->num*right.den, this->den*right.num);
       }
 
-      Ratio operator/(long long right) const
+      Ratio operator/(T right) const
       {
         return Ratio(this->num, this->den*right);
       }

@@ -18,10 +18,10 @@ void prove(bool condition, std::string name, int i)
 
 void test_addition()
 {
-  std::list<std::array<cbo::Ratio, 3>> data = {
-    {cbo::Ratio(1, 3), cbo::Ratio(1, 3), cbo::Ratio(2, 3)},
-    {cbo::Ratio(1, 4), cbo::Ratio(1, 3), cbo::Ratio(7, 12)},
-    {cbo::Ratio(5, 3), cbo::Ratio(2, 6), cbo::Ratio(2, 1)},
+  std::list<std::array<cbo::Ratio<>, 3>> data = {
+    {cbo::Ratio<>(1, 3), cbo::Ratio<>(1, 3), cbo::Ratio<>(2, 3)},
+    {cbo::Ratio<>(1, 4), cbo::Ratio<>(1, 3), cbo::Ratio<>(7, 12)},
+    {cbo::Ratio<>(5, 3), cbo::Ratio<>(2, 6), cbo::Ratio<>(2, 1)},
   };
 
   int i = 0;
@@ -37,10 +37,10 @@ void test_addition()
 
 void test_multiplication()
 {
-  std::list<std::array<cbo::Ratio, 3>> data = {
-    {cbo::Ratio(1, 3), cbo::Ratio(1, 3), cbo::Ratio(1, 9)},
-    {cbo::Ratio(1, 4), cbo::Ratio(1, 3), cbo::Ratio(1, 12)},
-    {cbo::Ratio(5, 3), cbo::Ratio(2, 6), cbo::Ratio(5, 9)},
+  std::list<std::array<cbo::Ratio<>, 3>> data = {
+    {cbo::Ratio<>(1, 3), cbo::Ratio<>(1, 3), cbo::Ratio<>(1, 9)},
+    {cbo::Ratio<>(1, 4), cbo::Ratio<>(1, 3), cbo::Ratio<>(1, 12)},
+    {cbo::Ratio<>(5, 3), cbo::Ratio<>(2, 6), cbo::Ratio<>(5, 9)},
   };
 
   int i = 0;
