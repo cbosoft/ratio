@@ -1,5 +1,5 @@
 CXX = g++
-CFLAGS = -Wall -Wextra -Werror -std=c++17
+CFLAGS = -g -Wall -Wextra -Werror -std=c++17
 
 HDR = ratio.hpp
 HDR_PATH = src/$(HDR)
