@@ -5,13 +5,17 @@
 
 #include "ratio.hpp"
 
+#define BG_RED     "\033[41m"
+#define FG_GREEN   "\033[32m"
+#define RESET       "\033[0m"
+
 void prove(bool condition, std::string name, int i)
 {
   if (condition) {
-    std::cerr << "(" << name << " #" << i << ") :: passed" << std::endl;
+    std::cerr << "(" << name << " #" << i << ") :: " FG_GREEN "passed" RESET << std::endl;
   }
   else {
-    std::cerr << "(" << name << " #" << i << ") :: failed!" << std::endl;
+    std::cerr << "(" << name << " #" << i << ") :: " BG_RED "failed!" RESET << std::endl;
     exit(1);
   }
 }
@@ -127,6 +131,7 @@ void test_division()
 int main(void)
 {
 
+  std::cerr << "Running test suite for cbo::Ratio" << std::endl;
   test_reduce();
   test_addition();
   test_subtraction();
