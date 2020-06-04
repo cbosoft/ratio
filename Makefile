@@ -30,6 +30,9 @@ install:
 	mkdir -p $(INCLUDE_DIR)
 	cp $(HDR_PATH) $(INCLUDE_DIR)/$(HDR)
 
+uninstall:
+	rm $(INCLUDE_DIR)/$(HDR)
+
 
 clean:
 	rm -rf obj test
