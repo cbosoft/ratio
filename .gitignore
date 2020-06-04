@@ -1,0 +1,6 @@
+tags
+gmon.out
+vgcore*
+test
+obj
+*/.*.un~
