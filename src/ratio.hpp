@@ -11,9 +11,18 @@ namespace cbo {
 
       static T get_gcd(T a, T b)
       {
-        while (b != 0) {
+        if (a == 0) return b;
+        if (b == 0) return a;
+
+        if (a < b) {
+          T temp = a;
           a = b;
-          b = a % b;
+          b = temp;
+        }
+
+        return get_gcd(b, a%b);
+      }
+
       void set_den(T den)
       {
         if (den != 0)
@@ -21,7 +30,6 @@ namespace cbo {
         else {
           throw std::runtime_error("ratio cannot have zero denominator");
         }
-        return a;
       }
 
       void set_num(T num)
@@ -34,7 +42,7 @@ namespace cbo {
       Ratio(T num, T den)
         : num(num), den(den)
       {
-        //this->reduce();
+        this->reduce();
       }
 
       void reduce()
