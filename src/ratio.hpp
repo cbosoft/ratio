@@ -83,25 +83,71 @@ namespace cbo {
         return Ratio(num, den);
       }
 
+      Ratio &operator+=(const Ratio &right)
+      {
+        if (this->den == right.den) {
+          this->num = this->num + right.num;
+        }
+        else {
+          T new_den = this->den*right.den;
+          T new_num = this->num*right.den + right.num*this->den;
+          this->set_den(new_den);
+          this->set_num(new_num);
+        }
+
+        this->reduce();
+
+        return *this;
+      }
+
       Ratio operator+(int right) const
       {
         return Ratio(this->num + (this->den*right), this->den);
+      }
+
+      Ratio &operator+=(int right)
+      {
+        this->num + (this->den*right);
+        return *this;
       }
 
 
       Ratio operator-(const Ratio& right) const
       {
         if (this->den == right.den)
-          return Ratio(this->num-right.num, this->den);
+          return Ratio(this->num - right.num, this->den);
 
         T den = this->den*right.den;
         T num = this->num*right.den - right.num*this->den;
         return Ratio(num, den);
       }
 
+      Ratio &operator-=(const Ratio &right)
+      {
+        if (this->den == right.den) {
+          this->num = this->num - right.num;
+        }
+        else {
+          T new_den = this->den*right.den;
+          T new_num = this->num*right.den - right.num*this->den;
+          this->set_den(new_den);
+          this->set_num(new_num);
+        }
+
+        this->reduce();
+
+        return *this;
+      }
+
       Ratio operator-(int right) const
       {
         return Ratio(this->num - (this->den*right), this->den);
+      }
+
+      Ratio &operator-=(int right)
+      {
+        this->num - (this->den*right);
+        return *this;
       }
 
 
@@ -110,9 +156,26 @@ namespace cbo {
         return Ratio(this->num*right.num, this->den*right.den);
       }
 
+      Ratio &operator*=(const Ratio &right)
+      {
+        this->num *= right.num;
+        this->den *= right.den;
+
+        this->reduce();
+
+        return *this;
+      }
+
       Ratio operator*(T right) const
       {
         return Ratio(this->num*right, this->den);
+      }
+
+      Ratio &operator*=(T right)
+      {
+        this->num *= right;
+        this->reduce();
+        return *this;
       }
 
 
@@ -121,9 +184,26 @@ namespace cbo {
         return Ratio(this->num*right.den, this->den*right.num);
       }
 
+      Ratio &operator/=(const Ratio &right)
+      {
+        this->num *= right.den;
+        this->den *= right.num;
+
+        this->reduce();
+
+        return *this;
+      }
+
       Ratio operator/(T right) const
       {
         return Ratio(this->num, this->den*right);
+      }
+
+      Ratio &operator/=(T right)
+      {
+        this->den *= right;
+        this->reduce();
+        return *this;
       }
 
       friend std::ostream &operator<<(std::ostream& out, const Ratio &R)
