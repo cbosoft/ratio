@@ -39,7 +39,7 @@ namespace cbo {
 
     public:
 
-      Ratio(T num, T den)
+      Ratio(T num = 0, T den = 1)
         : num(num), den(den)
       {
         this->reduce();
